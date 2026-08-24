@@ -1,3 +1,7 @@
+.agents/
+.opencode/
+.codex/
+.claude/
 .idea
 .phpunit.cache
 .phpunit.result.cache
