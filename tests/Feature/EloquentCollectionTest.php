@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Support\Facades\Schema;
-use RichanFongdasen\Turso\Tests\Fixtures\Models\Project;
+use Mis3085\Turso\Tests\Fixtures\Models\Project;
 
 beforeEach(function () {
     migrateTables('projects');

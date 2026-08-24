@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Tests\Fixtures\Models;
+namespace Mis3085\Turso\Tests\Fixtures\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;

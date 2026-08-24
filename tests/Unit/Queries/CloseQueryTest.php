@@ -1,9 +1,9 @@
 <?php
 
-use RichanFongdasen\Turso\Queries\CloseQuery;
+use Mis3085\Turso\Queries\CloseQuery;
 
 beforeEach(function () {
-    $this->query = new CloseQuery();
+    $this->query = new CloseQuery;
 });
 
 test('it can returns the query type', function () {

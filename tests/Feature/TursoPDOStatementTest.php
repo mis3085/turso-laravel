@@ -29,7 +29,7 @@ test('it can fetch all row sets of a simple select query result in associative a
 
     $statement->execute();
 
-    $statement->setFetchMode(\PDO::FETCH_ASSOC);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
     $response = $statement->fetchAll();
 
     expect(count($response))->toBe(1)
@@ -58,7 +58,7 @@ test('it can fetch all row sets of a simple select query result in both array fo
 
     $statement->execute();
 
-    $statement->setFetchMode(\PDO::FETCH_BOTH);
+    $statement->setFetchMode(PDO::FETCH_BOTH);
     $response = $statement->fetchAll();
 
     expect(count($response))->toBe(1)
@@ -85,7 +85,7 @@ test('it can fetch each row set of a simple select query result in associative a
 
     $statement->execute();
 
-    $statement->setFetchMode(\PDO::FETCH_ASSOC);
+    $statement->setFetchMode(PDO::FETCH_ASSOC);
     $response = $statement->fetch();
 
     expect($response['type'])->toBe($expectation['type'])

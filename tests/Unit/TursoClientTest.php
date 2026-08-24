@@ -2,8 +2,9 @@
 
 use Illuminate\Http\Client\RequestException;
 use Illuminate\Support\Facades\Http;
-use RichanFongdasen\Turso\Exceptions\TursoQueryException;
-use RichanFongdasen\Turso\TursoClient;
+use Mis3085\Turso\Database\TursoSchemaGrammar;
+use Mis3085\Turso\Exceptions\TursoQueryException;
+use Mis3085\Turso\TursoClient;
 
 beforeEach(function () {
     $this->client = new TursoClient(config('database.connections.turso'));
@@ -12,7 +13,7 @@ beforeEach(function () {
 test('it can reset client state', function () {
     $this->client->resetHttpClientState();
 
-    expect($this->client->getBaseUrl())->toBe('http://127.0.0.1:8080')
+    expect($this->client->getBaseUrl())->toBe(config('database.connections.turso.db_url'))
         ->and($this->client->getBaton())->toBeNull();
 })->group('TursoClientTest', 'UnitTest');
 
@@ -27,13 +28,16 @@ test('it can log queries', function () {
         ],
     ];
 
+    // The compiled statement differs between Laravel versions (e.g. "PRAGMA foreign_keys = ON;" vs "pragma foreign_keys = 1")
+    $foreignKeySql = app(TursoSchemaGrammar::class)->compileEnableForeignKeyConstraints();
+
     $expectedLog = [
         'request' => [
             'requests' => [
                 [
                     'type' => 'execute',
                     'stmt' => [
-                        'sql'  => 'PRAGMA foreign_keys = ON;',
+                        'sql'  => $foreignKeySql,
                     ],
                 ],
                 [

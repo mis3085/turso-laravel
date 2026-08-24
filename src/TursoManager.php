@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso;
+namespace Mis3085\Turso;
 
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\DB;
-use RichanFongdasen\Turso\Jobs\TursoSyncJob;
+use Mis3085\Turso\Jobs\TursoSyncJob;
 
 class TursoManager
 {

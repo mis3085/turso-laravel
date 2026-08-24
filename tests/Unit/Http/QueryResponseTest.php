@@ -1,8 +1,8 @@
 <?php
 
-use RichanFongdasen\Turso\Exceptions\TursoQueryException;
-use RichanFongdasen\Turso\Http\QueryResponse;
-use RichanFongdasen\Turso\Queries\ExecuteQuery;
+use Mis3085\Turso\Exceptions\TursoQueryException;
+use Mis3085\Turso\Http\QueryResponse;
+use Mis3085\Turso\Queries\ExecuteQuery;
 
 beforeEach(function () {
     $this->query = new ExecuteQuery(

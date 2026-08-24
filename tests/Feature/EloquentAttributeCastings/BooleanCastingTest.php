@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 
 beforeEach(function () {
@@ -13,7 +14,7 @@ afterEach(function () {
     Schema::dropIfExists('boolean_casting_table');
 });
 
-class BooleanCastingModel extends \Illuminate\Database\Eloquent\Model
+class BooleanCastingModel extends Model
 {
     protected $table = 'boolean_casting_table';
 

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Eloquent\Casts\AsStringable;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 
 beforeEach(function () {
@@ -14,7 +15,7 @@ afterEach(function () {
     Schema::dropIfExists('stringable_casting_table');
 });
 
-class StringableCastingModel extends \Illuminate\Database\Eloquent\Model
+class StringableCastingModel extends Model
 {
     protected $table = 'stringable_casting_table';
 

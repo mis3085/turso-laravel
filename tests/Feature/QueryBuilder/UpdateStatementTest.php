@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use RichanFongdasen\Turso\Tests\Fixtures\Models\User;
+use Mis3085\Turso\Tests\Fixtures\Models\User;
 
 beforeEach(function () {
     migrateTables('users');

@@ -25,7 +25,7 @@ test('it can retrieve all of the table information in the database', function ()
     $result = Schema::getTables()[0];
 
     expect($result['name'])->toBe('migrations')
-        ->and($result['schema'])->toBeNull()
+        ->and(in_array($result['schema'], [null, 'main'], true))->toBeTrue()
         ->and($result['comment'])->toBeNull()
         ->and($result['collation'])->toBeNull()
         ->and($result['engine'])->toBeNull();
@@ -84,7 +84,7 @@ test('it can create a new table', function () {
     $result = Schema::getTables()[0];
 
     expect($result['name'])->toBe('users')
-        ->and($result['schema'])->toBeNull()
+        ->and(in_array($result['schema'], [null, 'main'], true))->toBeTrue()
         ->and($result['comment'])->toBeNull()
         ->and($result['collation'])->toBeNull()
         ->and($result['engine'])->toBeNull();
@@ -118,7 +118,7 @@ test('it can drop all views from the database', function () {
     $view = collect(Schema::getViews())->first();
 
     expect($view['name'])->toBe('foo')
-        ->and($view['schema'])->toBeNull()
+        ->and(in_array($view['schema'], [null, 'main'], true))->toBeTrue()
         ->and($view['definition'])->toBe($createSql);
 
     Schema::dropAllViews();

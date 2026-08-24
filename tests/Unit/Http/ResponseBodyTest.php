@@ -1,15 +1,15 @@
 <?php
 
-use RichanFongdasen\Turso\Http\QueryResponse;
-use RichanFongdasen\Turso\Http\RequestBody;
-use RichanFongdasen\Turso\Http\ResponseBody;
-use RichanFongdasen\Turso\Queries\CloseQuery;
-use RichanFongdasen\Turso\Queries\ExecuteQuery;
+use Mis3085\Turso\Http\QueryResponse;
+use Mis3085\Turso\Http\RequestBody;
+use Mis3085\Turso\Http\ResponseBody;
+use Mis3085\Turso\Queries\CloseQuery;
+use Mis3085\Turso\Queries\ExecuteQuery;
 
 beforeEach(function () {
     $this->request = RequestBody::create('baton')
         ->push(new ExecuteQuery('SELECT "id", "name" FROM "users"'))
-        ->push(new CloseQuery());
+        ->push(new CloseQuery);
 
     $this->rawResponse = [
         'base_url' => 'https:://example-base-url.turso.io',
@@ -99,4 +99,4 @@ test('it can retrieve the QueryResponse instance by the specified index', functi
 
 test('it will raise InvalidArgumentException when the specified index is out of range', function () {
     $this->response->getQueryResponse(2);
-})->throws(\InvalidArgumentException::class)->group('ResponseBodyTest', 'UnitTest');
+})->throws(InvalidArgumentException::class)->group('ResponseBodyTest', 'UnitTest');

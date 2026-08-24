@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Enums;
+namespace Mis3085\Turso\Enums;
 
 use PDO;
 
@@ -17,11 +17,11 @@ enum PdoParam: int
     public static function fromValue(mixed $value): static
     {
         return match (gettype($value)) {
-            'boolean' => self::BOOL,
+            'boolean'           => self::BOOL,
             'double', 'integer' => self::INT,
-            'resource' => self::LOB,
-            'NULL'     => self::NULL,
-            default    => self::STR,
+            'resource'          => self::LOB,
+            'NULL'              => self::NULL,
+            default             => self::STR,
         };
     }
 }

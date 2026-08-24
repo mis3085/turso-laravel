@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Facades;
+namespace Mis3085\Turso\Facades;
 
 use Illuminate\Support\Facades\Facade;
-use RichanFongdasen\Turso\TursoManager;
+use Mis3085\Turso\TursoManager;
 
 /**
- * @see \RichanFongdasen\Turso\TursoManager
+ * @see TursoManager
  *
- * @mixin \RichanFongdasen\Turso\TursoManager
+ * @mixin TursoManager
  */
 class Turso extends Facade
 {

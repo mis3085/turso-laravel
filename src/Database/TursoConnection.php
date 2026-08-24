@@ -2,15 +2,16 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Database;
+namespace Mis3085\Turso\Database;
 
 use Exception;
 use Illuminate\Database\Connection;
+use Illuminate\Database\Grammar;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Str;
+use Mis3085\Turso\Jobs\TursoSyncJob;
 use PDO;
-use RichanFongdasen\Turso\Jobs\TursoSyncJob;
 
 class TursoConnection extends Connection
 {
@@ -49,25 +50,35 @@ class TursoConnection extends Connection
 
     protected function getDefaultPostProcessor(): TursoQueryProcessor
     {
-        return new TursoQueryProcessor();
+        return new TursoQueryProcessor;
     }
 
     protected function getDefaultQueryGrammar(): TursoQueryGrammar
     {
-        $grammar = new TursoQueryGrammar();
-        $grammar->setConnection($this);
+        // Laravel 12+ removed setConnection() from Grammar and instead
+        // requires a Connection argument in the constructor. The exact
+        // branch that is "wrong" depends on the installed framework version,
+        // so both are suppressed in phpstan.neon.dist instead.
+        if (! method_exists(Grammar::class, 'setConnection')) {
+            return new TursoQueryGrammar($this);
+        }
 
-        $this->withTablePrefix($grammar);
+        $grammar = new TursoQueryGrammar;
+        $grammar->setConnection($this);
+        $grammar->setTablePrefix($this->getTablePrefix());
 
         return $grammar;
     }
 
     protected function getDefaultSchemaGrammar(): TursoSchemaGrammar
     {
-        $grammar = new TursoSchemaGrammar();
-        $grammar->setConnection($this);
+        if (! method_exists(Grammar::class, 'setConnection')) {
+            return new TursoSchemaGrammar($this);
+        }
 
-        $this->withTablePrefix($grammar);
+        $grammar = new TursoSchemaGrammar;
+        $grammar->setConnection($this);
+        $grammar->setTablePrefix($this->getTablePrefix());
 
         return $grammar;
     }

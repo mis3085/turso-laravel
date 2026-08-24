@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Database;
+namespace Mis3085\Turso\Database;
 
 use Illuminate\Support\Collection;
+use Mis3085\Turso\Enums\PdoParam;
+use Mis3085\Turso\Enums\TursoType;
+use Mis3085\Turso\Http\QueryResponse;
 use PDO;
 use PDOException;
 use PDOStatement;
-use RichanFongdasen\Turso\Enums\PdoParam;
-use RichanFongdasen\Turso\Enums\TursoType;
-use RichanFongdasen\Turso\Http\QueryResponse;
 
 /**
  * Turso PDO Statement.
@@ -89,8 +89,8 @@ class TursoPDOStatement extends PDOStatement
                 $response->values()->toArray()
             ),
             PDO::FETCH_ASSOC, PDO::FETCH_NAMED => $response->toArray(),
-            PDO::FETCH_NUM => $response->values()->toArray(),
-            PDO::FETCH_OBJ => (object) $response->toArray(),
+            PDO::FETCH_NUM                     => $response->values()->toArray(),
+            PDO::FETCH_OBJ                     => (object) $response->toArray(),
 
             default => throw new PDOException('Unsupported fetch mode.'),
         };
@@ -113,7 +113,7 @@ class TursoPDOStatement extends PDOStatement
                 return array_merge($row->toArray(), $row->values()->toArray());
             })->toArray(),
             PDO::FETCH_ASSOC, PDO::FETCH_NAMED => $allRows->toArray(),
-            PDO::FETCH_NUM => $allRows->map(function (Collection $row) {
+            PDO::FETCH_NUM                     => $allRows->map(function (Collection $row) {
                 return $row->values()->toArray();
             })->toArray(),
             PDO::FETCH_OBJ => $allRows->map(function (Collection $row) {

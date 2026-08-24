@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Str;
-use RichanFongdasen\Turso\Tests\TestCase;
+use Mis3085\Turso\Tests\TestCase;
 
 uses(
     TestCase::class,

@@ -2,10 +2,11 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Database;
+namespace Mis3085\Turso\Database;
 
+use Illuminate\Database\Grammar;
 use Illuminate\Database\Schema\SQLiteBuilder;
-use RichanFongdasen\Turso\Exceptions\FeatureNotSupportedException;
+use Mis3085\Turso\Exceptions\FeatureNotSupportedException;
 
 class TursoSchemaBuilder extends SQLiteBuilder
 {
@@ -69,7 +70,13 @@ class TursoSchemaBuilder extends SQLiteBuilder
     protected function grammar(): TursoSchemaGrammar
     {
         if (! ($this->grammar instanceof TursoSchemaGrammar)) {
-            $this->grammar = new TursoSchemaGrammar();
+            // Laravel 12+ removed setConnection() from Grammar and instead
+            // requires a Connection argument in the constructor. The exact
+            // branch that is "wrong" depends on the installed framework version,
+            // so both are suppressed in phpstan.neon.dist instead.
+            $this->grammar = method_exists(Grammar::class, 'setConnection')
+                ? new TursoSchemaGrammar
+                : new TursoSchemaGrammar($this->connection);
         }
 
         return $this->grammar;

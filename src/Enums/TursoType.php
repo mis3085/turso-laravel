@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Enums;
+namespace Mis3085\Turso\Enums;
 
 /**
  * Turso data type enumeration.
@@ -19,10 +19,10 @@ enum TursoType: string
     public static function fromValue(mixed $value): static
     {
         $result = match (gettype($value)) {
-            'NULL' => self::NULL,
+            'NULL'               => self::NULL,
             'boolean', 'integer' => self::INTEGER,
-            'double', 'float' => self::FLOAT,
-            'string' => self::fromString($value),
+            'double', 'float'    => self::FLOAT,
+            'string'             => self::fromString($value),
 
             default => null,
         };

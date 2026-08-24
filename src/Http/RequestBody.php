@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Http;
+namespace Mis3085\Turso\Http;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
-use RichanFongdasen\Turso\Contracts\TursoQuery;
-use RichanFongdasen\Turso\Database\TursoSchemaGrammar;
-use RichanFongdasen\Turso\Queries\CloseQuery;
-use RichanFongdasen\Turso\Queries\ExecuteQuery;
+use Mis3085\Turso\Contracts\TursoQuery;
+use Mis3085\Turso\Database\TursoSchemaGrammar;
+use Mis3085\Turso\Queries\CloseQuery;
+use Mis3085\Turso\Queries\ExecuteQuery;
 
 class RequestBody implements Arrayable
 {
@@ -23,7 +23,7 @@ class RequestBody implements Arrayable
     public function __construct(?string $baton = null)
     {
         $this->baton = $baton;
-        $this->queries = new Collection();
+        $this->queries = new Collection;
     }
 
     public static function create(?string $baton = null): self
@@ -33,7 +33,7 @@ class RequestBody implements Arrayable
 
     public function clearQueries(): self
     {
-        $this->queries = new Collection();
+        $this->queries = new Collection;
 
         return $this;
     }
@@ -100,7 +100,7 @@ class RequestBody implements Arrayable
         $body['requests'] = $this->queries->toArray();
 
         if ($this->shouldClose) {
-            $body['requests'][] = (new CloseQuery())->toArray();
+            $body['requests'][] = (new CloseQuery)->toArray();
         }
 
         return $body;

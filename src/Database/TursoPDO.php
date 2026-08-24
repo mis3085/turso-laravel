@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Database;
+namespace Mis3085\Turso\Database;
 
+use Mis3085\Turso\TursoClient;
 use PDO;
-use RichanFongdasen\Turso\TursoClient;
 
 /**
  * Turso PDO Database Connection.

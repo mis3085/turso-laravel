@@ -4,8 +4,8 @@ use Illuminate\Process\PendingProcess;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Process;
-use RichanFongdasen\Turso\Database\TursoPDO;
-use RichanFongdasen\Turso\Jobs\TursoSyncJob;
+use Mis3085\Turso\Database\TursoPDO;
+use Mis3085\Turso\Jobs\TursoSyncJob;
 
 test('it can create a PDO object for read replica database connection', function () {
     expect(DB::connection('turso')->getReadPdo())->toBeInstanceOf(TursoPDO::class);
@@ -14,7 +14,7 @@ test('it can create a PDO object for read replica database connection', function
         'db_replica' => '/dev/null',
     ]);
 
-    expect($pdo)->toBeInstanceOf(\PDO::class)
+    expect($pdo)->toBeInstanceOf(PDO::class)
         ->and(DB::connection('turso')->getReadPdo())->toBe($pdo);
 })->group('TursoConnectionTest', 'UnitTest');
 
@@ -38,10 +38,12 @@ test('it can trigger the sync command to synchronize the database', function () 
 
     DB::connection('turso')->sync();
 
-    Process::assertRan(function (PendingProcess $process) {
+    $dbUrl = config('database.connections.turso.db_url');
+
+    Process::assertRan(function (PendingProcess $process) use ($dbUrl) {
         $expectedPath = realpath(__DIR__ . '/../../..');
 
-        expect($process->command)->toBe('/dev/null turso-sync.mjs "http://127.0.0.1:8080" "your-access-token" "/tmp/turso.sqlite"')
+        expect($process->command)->toBe("/dev/null turso-sync.mjs \"{$dbUrl}\" \"your-access-token\" \"/tmp/turso.sqlite\"")
             ->and($process->timeout)->toBe(60)
             ->and($process->path)->toBe($expectedPath);
 

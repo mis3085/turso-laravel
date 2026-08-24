@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\DB;
-use RichanFongdasen\Turso\Database\TursoPDO;
+use Mis3085\Turso\Database\TursoPDO;
 
 beforeEach(function () {
     $this->pdo = DB::connection()->getPdo();

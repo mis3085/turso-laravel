@@ -1,56 +1,59 @@
 {
-    "name": "richan-fongdasen/turso-laravel",
+    "name": "mis3085/turso-laravel",
     "description": "A Turso/LibSQL database driver for Laravel",
     "type": "library",
     "keywords": [
-        "Richan Fongdasen",
         "turso",
         "libsql",
         "laravel",
         "turso-laravel"
     ],
-    "homepage": "https://github.com/richan-fongdasen/turso-laravel",
+    "homepage": "https://github.com/mis3085/turso-laravel",
     "license": "MIT",
     "authors": [
         {
+            "name": "mis3085",
+            "role": "Maintainer"
+        },
+        {
             "name": "Richan Fongdasen",
             "email": "richan.fongdasen@gmail.com",
-            "role": "Developer"
+            "role": "Original developer"
         }
     ],
     "require": {
         "php": "^8.2",
-        "illuminate/bus": "^11.0",
-        "illuminate/contracts": "^11.0",
-        "illuminate/console": "^11.0",
-        "illuminate/database": "^11.0",
-        "illuminate/filesystem": "^11.0",
-        "illuminate/http": "^11.0",
-        "illuminate/queue": "^11.0",
-        "illuminate/support": "^11.0",
+        "illuminate/bus": "^11.0|^12.0|^13.0",
+        "illuminate/contracts": "^11.0|^12.0|^13.0",
+        "illuminate/console": "^11.0|^12.0|^13.0",
+        "illuminate/database": "^11.0|^12.0|^13.0",
+        "illuminate/filesystem": "^11.0|^12.0|^13.0",
+        "illuminate/http": "^11.0|^12.0|^13.0",
+        "illuminate/queue": "^11.0|^12.0|^13.0",
+        "illuminate/support": "^11.0|^12.0|^13.0",
         "spatie/laravel-package-tools": "^1.16"
     },
     "require-dev": {
-        "larastan/larastan": "^2.9",
+        "larastan/larastan": "^3.10",
         "laravel/pint": "^1.14",
-        "nunomaduro/collision": "^8.1.1",
-        "orchestra/testbench": "^9.0.0",
-        "pestphp/pest": "^3.5",
-        "pestphp/pest-plugin-arch": "^3.0",
-        "pestphp/pest-plugin-laravel": "^3.0",
+        "nunomaduro/collision": "^8.1.1|^9.0",
+        "orchestra/testbench": "^9.0.0|^10.0|^11.0",
+        "pestphp/pest": "^3.5|^4.0",
+        "pestphp/pest-plugin-arch": "^3.0|^4.0",
+        "pestphp/pest-plugin-laravel": "^3.0|^4.0",
         "phpstan/extension-installer": "^1.3",
-        "phpstan/phpstan-deprecation-rules": "^1.1",
-        "phpstan/phpstan-phpunit": "^1.3",
-        "phpstan/phpstan-strict-rules": "^1.5"
+        "phpstan/phpstan-deprecation-rules": "^2.0",
+        "phpstan/phpstan-phpunit": "^2.0",
+        "phpstan/phpstan-strict-rules": "^2.0"
     },
     "autoload": {
         "psr-4": {
-            "RichanFongdasen\\Turso\\": "src/"
+            "Mis3085\\Turso\\": "src/"
         }
     },
     "autoload-dev": {
         "psr-4": {
-            "RichanFongdasen\\Turso\\Tests\\": "tests/",
+            "Mis3085\\Turso\\Tests\\": "tests/",
             "Workbench\\App\\": "workbench/app/"
         }
     },
@@ -82,10 +85,10 @@
     "extra": {
         "laravel": {
             "providers": [
-                "RichanFongdasen\\Turso\\TursoLaravelServiceProvider"
+                "Mis3085\\Turso\\TursoLaravelServiceProvider"
             ],
             "aliases": {
-                "Turso": "RichanFongdasen\\Turso\\Facades\\Turso"
+                "Turso": "Mis3085\\Turso\\Facades\\Turso"
             }
         }
     },

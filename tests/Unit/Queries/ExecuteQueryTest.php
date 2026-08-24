@@ -1,6 +1,6 @@
 <?php
 
-use RichanFongdasen\Turso\Queries\ExecuteQuery;
+use Mis3085\Turso\Queries\ExecuteQuery;
 
 beforeEach(function () {
     $this->query = new ExecuteQuery(

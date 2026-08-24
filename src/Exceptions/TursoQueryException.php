@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Exceptions;
+namespace Mis3085\Turso\Exceptions;
 
 use LogicException;
 

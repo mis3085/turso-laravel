@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Http;
+namespace Mis3085\Turso\Http;
 
 use Illuminate\Support\Collection;
-use RichanFongdasen\Turso\Contracts\TursoQuery;
-use RichanFongdasen\Turso\Exceptions\TursoQueryException;
-use RichanFongdasen\Turso\Queries\ExecuteQuery;
+use Mis3085\Turso\Contracts\TursoQuery;
+use Mis3085\Turso\Exceptions\TursoQueryException;
+use Mis3085\Turso\Queries\ExecuteQuery;
 
 class QueryResponse
 {
@@ -68,11 +68,11 @@ class QueryResponse
 
     protected function extractRows(array $response): Collection
     {
-        $rows = new Collection();
+        $rows = new Collection;
 
         collect((array) data_get($response, 'response.result.rows', []))
             ->each(function (array $item) use (&$rows) {
-                $row = new Collection();
+                $row = new Collection;
 
                 collect($item)
                     ->each(function (array $column, int $index) use (&$row) {

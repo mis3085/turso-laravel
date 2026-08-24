@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Database;
+namespace Mis3085\Turso\Database;
 
 use Illuminate\Database\Connectors\Connector;
 use Illuminate\Database\Connectors\ConnectorInterface;
@@ -12,7 +12,7 @@ class TursoConnector extends Connector implements ConnectorInterface
     /**
      * Establish a database connection.
      *
-     * @return \RichanFongdasen\Turso\Database\TursoPDO
+     * @return TursoPDO
      */
     public function connect(array $config)
     {

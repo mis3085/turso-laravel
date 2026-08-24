@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Contracts;
+namespace Mis3085\Turso\Contracts;
 
 use Illuminate\Contracts\Support\Arrayable;
 use Stringable;

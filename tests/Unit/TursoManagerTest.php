@@ -4,8 +4,8 @@ use Illuminate\Process\PendingProcess;
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Process;
-use RichanFongdasen\Turso\Facades\Turso;
-use RichanFongdasen\Turso\Jobs\TursoSyncJob;
+use Mis3085\Turso\Facades\Turso;
+use Mis3085\Turso\Jobs\TursoSyncJob;
 
 test('it can trigger the sync command immediately', function () {
     Process::fake();
@@ -19,10 +19,12 @@ test('it can trigger the sync command immediately', function () {
 
     Turso::sync();
 
-    Process::assertRan(function (PendingProcess $process) {
+    $dbUrl = config('database.connections.turso.db_url');
+
+    Process::assertRan(function (PendingProcess $process) use ($dbUrl) {
         $expectedPath = realpath(__DIR__ . '/../..');
 
-        expect($process->command)->toBe('/dev/null turso-sync.mjs "http://127.0.0.1:8080" "your-access-token" "/tmp/turso.sqlite"')
+        expect($process->command)->toBe("/dev/null turso-sync.mjs \"{$dbUrl}\" \"your-access-token\" \"/tmp/turso.sqlite\"")
             ->and($process->timeout)->toBe(60)
             ->and($process->path)->toBe($expectedPath);
 
@@ -54,10 +56,12 @@ test('it can run the sync background job and call the sync artisan command', fun
 
     Turso::backgroundSync();
 
-    Process::assertRan(function (PendingProcess $process) {
+    $dbUrl = config('database.connections.turso.db_url');
+
+    Process::assertRan(function (PendingProcess $process) use ($dbUrl) {
         $expectedPath = realpath(__DIR__ . '/../..');
 
-        expect($process->command)->toBe('/dev/null turso-sync.mjs "http://127.0.0.1:8080" "your-access-token" "/tmp/turso.sqlite"')
+        expect($process->command)->toBe("/dev/null turso-sync.mjs \"{$dbUrl}\" \"your-access-token\" \"/tmp/turso.sqlite\"")
             ->and($process->timeout)->toBe(60)
             ->and($process->path)->toBe($expectedPath);
 

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Queries;
+namespace Mis3085\Turso\Queries;
 
-use RichanFongdasen\Turso\Contracts\TursoQuery;
+use Mis3085\Turso\Contracts\TursoQuery;
 
 abstract class Query implements TursoQuery
 {

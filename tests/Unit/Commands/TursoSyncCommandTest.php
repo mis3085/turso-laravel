@@ -32,10 +32,12 @@ test('it can run the cli script to sync the database', function () {
 
     Artisan::call('turso:sync');
 
-    Process::assertRan(function (PendingProcess $process) {
+    $dbUrl = config('database.connections.turso.db_url');
+
+    Process::assertRan(function (PendingProcess $process) use ($dbUrl) {
         $expectedPath = realpath(__DIR__ . '/../../..');
 
-        expect($process->command)->toBe('/dev/null turso-sync.mjs "http://127.0.0.1:8080" "your-access-token" "/tmp/turso.sqlite"')
+        expect($process->command)->toBe("/dev/null turso-sync.mjs \"{$dbUrl}\" \"your-access-token\" \"/tmp/turso.sqlite\"")
             ->and($process->timeout)->toBe(60)
             ->and($process->path)->toBe($expectedPath);
 

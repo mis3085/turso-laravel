@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
-use RichanFongdasen\Turso\Exceptions\FeatureNotSupportedException;
+use Mis3085\Turso\Exceptions\FeatureNotSupportedException;
 
 test('it raises exception on creating a new database.', function () {
     Schema::createDatabase('test');

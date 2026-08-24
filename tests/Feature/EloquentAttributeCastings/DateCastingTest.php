@@ -1,5 +1,7 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Schema;
 
 beforeEach(function () {
@@ -13,7 +15,7 @@ afterEach(function () {
     Schema::dropIfExists('date_casting_table');
 });
 
-class DateCastingModel extends \Illuminate\Database\Eloquent\Model
+class DateCastingModel extends Model
 {
     protected $table = 'date_casting_table';
 
@@ -67,7 +69,7 @@ test('it can insert a new record using Eloquent ORM with Carbon instance', funct
     $birthdate = '1990-01-01';
 
     DateCastingModel::create([
-        'birthdate' => new \Illuminate\Support\Carbon($birthdate),
+        'birthdate' => new Carbon($birthdate),
     ]);
 
     $result = DateCastingModel::first();
@@ -87,7 +89,7 @@ test('it can update an existing record using Eloquent ORM with Carbon instance',
     $newBirthdate = '1995-01-01';
 
     DateCastingModel::first()->update([
-        'birthdate' => new \Illuminate\Support\Carbon($newBirthdate),
+        'birthdate' => new Carbon($newBirthdate),
     ]);
 
     $result = DateCastingModel::first();

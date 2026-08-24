@@ -1,6 +1,6 @@
 <?php
 
-// config for RichanFongdasen/TursoLaravel
+// config for Mis3085/TursoLaravel
 return [
     'client' => [
         'connect_timeout' => env('TURSO_CONNECT_TIMEOUT', 2),

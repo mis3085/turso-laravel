@@ -1,10 +1,10 @@
 <?php
 
-namespace RichanFongdasen\Turso\Tests;
+namespace Mis3085\Turso\Tests;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
+use Mis3085\Turso\TursoLaravelServiceProvider;
 use Orchestra\Testbench\TestCase as Orchestra;
-use RichanFongdasen\Turso\TursoLaravelServiceProvider;
 
 class TestCase extends Orchestra
 {
@@ -13,7 +13,7 @@ class TestCase extends Orchestra
         parent::setUp();
 
         Factory::guessFactoryNamesUsing(
-            fn (string $modelName) => 'RichanFongdasen\\Turso\\Tests\\Fixtures\\Factories\\' . class_basename($modelName) . 'Factory'
+            fn (string $modelName) => 'Mis3085\\Turso\\Tests\\Fixtures\\Factories\\' . class_basename($modelName) . 'Factory'
         );
     }
 
@@ -28,7 +28,7 @@ class TestCase extends Orchestra
     {
         config()->set('database.connections.turso', [
             'driver'                  => 'turso',
-            'db_url'                  => env('DB_URL', 'http://127.0.0.1:8080'),
+            'db_url'                  => env('TURSO_DB_URL', 'http://127.0.0.1:8080'),
             'db_replica'              => env('DB_REPLICA'),
             'prefix'                  => env('DB_PREFIX', ''),
             'access_token'            => 'your-access-token',

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 
 beforeEach(function () {
@@ -13,7 +14,7 @@ afterEach(function () {
     Schema::dropIfExists('array_casting_table');
 });
 
-class ArrayCastingModel extends \Illuminate\Database\Eloquent\Model
+class ArrayCastingModel extends Model
 {
     protected $table = 'array_casting_table';
 

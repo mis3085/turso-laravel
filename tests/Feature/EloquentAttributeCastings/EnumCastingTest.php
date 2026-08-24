@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 
 beforeEach(function () {
@@ -20,7 +21,7 @@ enum Status: int
     case Rejected = 2;
 }
 
-class EnumCastingModel extends \Illuminate\Database\Eloquent\Model
+class EnumCastingModel extends Model
 {
     protected $table = 'enum_casting_table';
 

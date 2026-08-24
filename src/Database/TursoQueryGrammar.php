@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Database;
+namespace Mis3085\Turso\Database;
 
 use Illuminate\Database\Query\Grammars\SQLiteGrammar;
 

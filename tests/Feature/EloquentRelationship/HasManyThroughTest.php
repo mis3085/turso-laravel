@@ -1,9 +1,9 @@
 <?php
 
 use Illuminate\Database\Eloquent\Collection;
-use RichanFongdasen\Turso\Tests\Fixtures\Models\Deployment;
-use RichanFongdasen\Turso\Tests\Fixtures\Models\Environment;
-use RichanFongdasen\Turso\Tests\Fixtures\Models\Project;
+use Mis3085\Turso\Tests\Fixtures\Models\Deployment;
+use Mis3085\Turso\Tests\Fixtures\Models\Environment;
+use Mis3085\Turso\Tests\Fixtures\Models\Project;
 
 beforeEach(function () {
     migrateTables('projects', 'environments', 'deployments');

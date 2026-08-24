@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Schema;
-use RichanFongdasen\Turso\Tests\Fixtures\Models\Role;
+use Mis3085\Turso\Tests\Fixtures\Models\Role;
 
 beforeEach(function () {
     migrateTables('roles');

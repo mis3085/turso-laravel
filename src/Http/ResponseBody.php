@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Http;
+namespace Mis3085\Turso\Http;
 
 use Illuminate\Support\Collection;
 use InvalidArgumentException;
@@ -32,7 +32,7 @@ class ResponseBody
 
     protected function extractQueryResponses(array $response): Collection
     {
-        $queryResponses = new Collection();
+        $queryResponses = new Collection;
 
         collect((array) data_get($response, 'results', []))
             ->each(function (array $queryResponse, int $index) use ($queryResponses) {

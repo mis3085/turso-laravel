@@ -1,8 +1,8 @@
 <?php
 
 use Illuminate\Database\Eloquent\Collection;
-use RichanFongdasen\Turso\Tests\Fixtures\Models\Role;
-use RichanFongdasen\Turso\Tests\Fixtures\Models\User;
+use Mis3085\Turso\Tests\Fixtures\Models\Role;
+use Mis3085\Turso\Tests\Fixtures\Models\User;
 
 beforeEach(function () {
     migrateTables('users', 'roles', 'user_roles');

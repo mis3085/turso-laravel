@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso;
+namespace Mis3085\Turso;
 
 use Illuminate\Support\Facades\DB;
-use RichanFongdasen\Turso\Commands\TursoSyncCommand;
-use RichanFongdasen\Turso\Database\TursoConnection;
-use RichanFongdasen\Turso\Database\TursoConnector;
-use RichanFongdasen\Turso\Facades\Turso;
+use Mis3085\Turso\Commands\TursoSyncCommand;
+use Mis3085\Turso\Database\TursoConnection;
+use Mis3085\Turso\Database\TursoConnector;
+use Mis3085\Turso\Facades\Turso;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 
@@ -45,14 +45,14 @@ class TursoLaravelServiceProvider extends PackageServiceProvider
         parent::register();
 
         $this->app->scoped(TursoManager::class, function () {
-            return new TursoManager();
+            return new TursoManager;
         });
 
         DB::extend('turso', function (array $config, string $name) {
             $config['database'] = null;
             $config['name'] = $name;
 
-            $connector = new TursoConnector();
+            $connector = new TursoConnector;
             $pdo = $connector->connect($config);
 
             $connection = new TursoConnection($pdo, $config['name'], $config['prefix'], $config);

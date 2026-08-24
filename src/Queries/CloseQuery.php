@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Queries;
+namespace Mis3085\Turso\Queries;
 
 class CloseQuery extends Query
 {

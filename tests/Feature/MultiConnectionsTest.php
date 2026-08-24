@@ -2,12 +2,12 @@
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
-use RichanFongdasen\Turso\Tests\Fixtures\Models\Project;
+use Mis3085\Turso\Tests\Fixtures\Models\Project;
 
 beforeEach(function () {
     config()->set('database.connections.otherdb', [
         'driver'                  => 'turso',
-        'db_url'                  => env('DB_URL', 'http://127.0.0.1:8080'),
+        'db_url'                  => config('database.connections.turso.db_url'),
         'db_replica'              => env('DB_REPLICA'),
         'database'                => null,
         'prefix'                  => env('DB_PREFIX', ''),

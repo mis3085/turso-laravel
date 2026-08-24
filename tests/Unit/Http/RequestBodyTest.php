@@ -1,10 +1,13 @@
 <?php
 
-use RichanFongdasen\Turso\Http\RequestBody;
-use RichanFongdasen\Turso\Queries\ExecuteQuery;
+use Mis3085\Turso\Database\TursoSchemaGrammar;
+use Mis3085\Turso\Http\RequestBody;
+use Mis3085\Turso\Queries\ExecuteQuery;
 
 beforeEach(function () {
     $this->baton = null;
+    // The compiled statement differs between Laravel versions (e.g. "PRAGMA foreign_keys = ON;" vs "pragma foreign_keys = 1")
+    $this->foreignKeySql = app(TursoSchemaGrammar::class)->compileEnableForeignKeyConstraints();
     $this->request = RequestBody::create($this->baton)
         ->withCloseRequest()
         ->withForeignKeyConstraints(true)
@@ -17,7 +20,7 @@ test('it can convert itself into an array', function () {
             [
                 'type' => 'execute',
                 'stmt' => [
-                    'sql' => 'PRAGMA foreign_keys = ON;',
+                    'sql' => $this->foreignKeySql,
                 ],
             ],
             [
@@ -58,7 +61,7 @@ test('it can push a new query', function () {
             [
                 'type' => 'execute',
                 'stmt' => [
-                    'sql' => 'PRAGMA foreign_keys = ON;',
+                    'sql' => $this->foreignKeySql,
                 ],
             ],
             [
@@ -94,7 +97,7 @@ test('it can remove the close query from the body', function () {
             [
                 'type' => 'execute',
                 'stmt' => [
-                    'sql' => 'PRAGMA foreign_keys = ON;',
+                    'sql' => $this->foreignKeySql,
                 ],
             ],
             [
@@ -141,4 +144,4 @@ test('it can retrieve a specific TursoQuery instance by the given index', functi
 
 test('it raises InvalidArgumentException when the query index is not found', function () {
     $this->request->getQuery(8);
-})->throws(\InvalidArgumentException::class)->group('RequestBodyTest', 'UnitTest');
+})->throws(InvalidArgumentException::class)->group('RequestBodyTest', 'UnitTest');

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso\Commands;
+namespace Mis3085\Turso\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -42,7 +42,8 @@ class TursoSyncCommand extends Command
     {
         $timeout = (int) config('turso-laravel.sync_command.timeout');
 
-        $connectionName = $this->argument('connectionName') ?? DB::getDefaultConnection();
+        $argument = $this->argument('connectionName');
+        $connectionName = is_string($argument) ? $argument : DB::getDefaultConnection();
 
         if (DB::connection($connectionName)->getConfig('driver') !== 'turso') {
             $this->error('The specified connection is not a Turso connection.');

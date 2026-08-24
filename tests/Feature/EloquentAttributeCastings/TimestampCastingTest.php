@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 
 beforeEach(function () {
@@ -13,7 +14,7 @@ afterEach(function () {
     Schema::dropIfExists('timestamp_casting_table');
 });
 
-class TimestampCastingModel extends \Illuminate\Database\Eloquent\Model
+class TimestampCastingModel extends Model
 {
     protected $table = 'timestamp_casting_table';
 

@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace RichanFongdasen\Turso;
+namespace Mis3085\Turso;
 
 use Illuminate\Cache\ArrayStore;
 use Illuminate\Http\Client\PendingRequest;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Http;
-use RichanFongdasen\Turso\Http\QueryResponse;
-use RichanFongdasen\Turso\Http\RequestBody;
-use RichanFongdasen\Turso\Http\ResponseBody;
-use RichanFongdasen\Turso\Queries\ExecuteQuery;
+use Mis3085\Turso\Http\QueryResponse;
+use Mis3085\Turso\Http\RequestBody;
+use Mis3085\Turso\Http\ResponseBody;
+use Mis3085\Turso\Queries\ExecuteQuery;
 
 class TursoClient
 {
@@ -36,9 +36,9 @@ class TursoClient
         ));
         $this->baseUrl = (string) $this->config->get('db_url', '');
 
-        $this->connectionStore = new ArrayStore();
+        $this->connectionStore = new ArrayStore;
 
-        $this->queryLog = new Collection();
+        $this->queryLog = new Collection;
 
         $this->disableQueryLog();
         $this->resetHttpClientState();
@@ -91,7 +91,7 @@ class TursoClient
 
     public function flushQueryLog(): void
     {
-        $this->queryLog = new Collection();
+        $this->queryLog = new Collection;
     }
 
     public function freshHttpRequest(): PendingRequest

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 
 beforeEach(function () {
@@ -13,7 +14,7 @@ afterEach(function () {
     Schema::dropIfExists('double_casting_table');
 });
 
-class DoubleCastingModel extends \Illuminate\Database\Eloquent\Model
+class DoubleCastingModel extends Model
 {
     protected $table = 'double_casting_table';
 

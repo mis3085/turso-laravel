@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Schema;
 
 beforeEach(function () {
@@ -13,7 +14,7 @@ afterEach(function () {
     Schema::dropIfExists('float_casting_table');
 });
 
-class FloatCastingModel extends \Illuminate\Database\Eloquent\Model
+class FloatCastingModel extends Model
 {
     protected $table = 'float_casting_table';
 

@@ -8,9 +8,9 @@ arch('it should not use any debugging functions')
     ->each->not->toBeUsed();
 
 arch('it should implement strict types')
-    ->expect('RichanFongdasen\\Turso')
+    ->expect('Mis3085\\Turso')
     ->toUseStrictTypes();
 
 arch('test fixtures should implement strict types')
-    ->expect('RichanFongdasen\\Turso\\Tests\\Fixtures')
+    ->expect('Mis3085\\Turso\\Tests\\Fixtures')
     ->toUseStrictTypes();
