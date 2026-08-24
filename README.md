@@ -1,29 +1,32 @@
 # A Turso database driver for Laravel
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/richan-fongdasen/turso-laravel.svg?style=flat-square)](https://packagist.org/packages/richan-fongdasen/turso-laravel)
-[![License: MIT](https://poser.pugx.org/richan-fongdasen/turso-laravel/license.svg)](https://opensource.org/licenses/MIT)
-[![PHPStan](https://github.com/richan-fongdasen/turso-laravel/actions/workflows/phpstan.yml/badge.svg?branch=main)](https://github.com/richan-fongdasen/turso-laravel/actions/workflows/phpstan.yml)
-[![Unit Tests](https://github.com/richan-fongdasen/turso-laravel/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/richan-fongdasen/turso-laravel/actions/workflows/run-tests.yml)
-[![Code Style](https://github.com/richan-fongdasen/turso-laravel/actions/workflows/fix-php-code-style-issues.yml/badge.svg?branch=main)](https://github.com/richan-fongdasen/turso-laravel/actions/workflows/fix-php-code-style-issues.yml)
-[![codecov](https://codecov.io/gh/richan-fongdasen/turso-laravel/graph/badge.svg?token=eKJSttyUGc)](https://codecov.io/gh/richan-fongdasen/turso-laravel)
-[![Total Downloads](https://img.shields.io/packagist/dt/richan-fongdasen/turso-laravel.svg?style=flat-square)](https://packagist.org/packages/richan-fongdasen/turso-laravel)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/mis3085/turso-laravel.svg?style=flat-square)](https://packagist.org/packages/mis3085/turso-laravel)
+[![License: MIT](https://poser.pugx.org/mis3085/turso-laravel/license.svg)](https://opensource.org/licenses/MIT)
+[![PHPStan](https://github.com/mis3085/turso-laravel/actions/workflows/phpstan.yml/badge.svg?branch=main)](https://github.com/mis3085/turso-laravel/actions/workflows/phpstan.yml)
+[![Unit Tests](https://github.com/mis3085/turso-laravel/actions/workflows/run-tests.yml/badge.svg?branch=main)](https://github.com/mis3085/turso-laravel/actions/workflows/run-tests.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/mis3085/turso-laravel.svg?style=flat-square)](https://packagist.org/packages/mis3085/turso-laravel)
 
 This package provides a Turso database driver for Laravel, allowing you to use Turso as your database backend in Laravel applications. The driver communicates with the Turso database server using an HTTP client.
 
-You can find a demo application that uses this Turso database driver in the [richan-fongdasen/pingcrm](https://github.com/richan-fongdasen/pingcrm) repository.
+This is a maintained fork of [richan-fongdasen/turso-laravel](https://github.com/richan-fongdasen/turso-laravel), kept alive to support current Laravel versions.
 
 ## Requirements
 
 -   PHP 8.2 or higher
--   Laravel 11.0 or higher
 -   Node.js 18 or higher
+
+| Laravel | PHP           | Package |
+| :------ | :------------ | :------ |
+| 11.x    | 8.2 - 8.4     | 2.x     |
+| 12.x    | 8.2 - 8.5     | 2.x     |
+| 13.x    | 8.3 - 8.5     | 2.x     |
 
 ## Installation
 
 You can install the package via Composer:
 
 ```bash
-composer require richan-fongdasen/turso-laravel
+composer require mis3085/turso-laravel
 ```
 
 To use Turso as your database driver in Laravel, append the following configuration to the `connections` array in your `config/database.php` file:
@@ -45,7 +48,7 @@ To use Turso as your database driver in Laravel, append the following configurat
 Publish the configuration file and sync script by running the following command:
 
 ```bash
-php artisan vendor:publish --provider="RichanFongdasen\Turso\TursoLaravelServiceProvider"
+php artisan vendor:publish --provider="Mis3085\Turso\TursoLaravelServiceProvider"
 ```
 
 The above command publishes the following files:
@@ -141,7 +144,7 @@ Run the sync script programmatically using the following code:
 
 ```php
 use Illuminate\Support\Facades\DB;
-use RichanFongdasen\Turso\Facades\Turso;
+use Mis3085\Turso\Facades\Turso;
 
 if ( DB::hasModifiedRecords() ) {
     // Run the sync script immediately
@@ -189,13 +192,39 @@ Please see [CHANGELOG](CHANGELOG.md) for more information on what has changed re
 
 Please see [CONTRIBUTING](.github/CONTRIBUTING.md) for details.
 
+### Local development
+
+The test suite needs a local Turso-compatible server and a PHP version matching the target Laravel release. Docker is used for both:
+
+```bash
+# Start the local database server (required by the feature tests)
+docker compose up -d turso
+
+# Run the whole suite against the highest supported stack (Laravel 13, PHP 8.3+)
+docker compose run --rm tests sh -c "composer update && vendor/bin/pest"
+```
+
+On a machine with a native PHP that satisfies the version table above, you can also run the suite directly:
+
+```bash
+composer install
+vendor/bin/pest
+```
+
+To test against a specific Laravel version locally, pin it the same way the CI matrix does:
+
+```bash
+composer require "orchestra/testbench:^9.0" --dev --no-interaction --no-update && composer update && vendor/bin/pest
+```
+
 ## Security Vulnerabilities
 
 Please review [our security policy](../../security/policy) on how to report security vulnerabilities.
 
 ## Credits
 
--   [Richan Fongdasen](https://github.com/richan-fongdasen)
+-   [Richan Fongdasen](https://github.com/richan-fongdasen) — original author
+-   [4lun](https://github.com/4lun) — the Laravel 12/13 compatibility work in [upstream PR #25](https://github.com/richan-fongdasen/turso-laravel/pull/25)
 -   [All Contributors](../../contributors)
 
 ## License

@@ -1,6 +1,19 @@
 # Changelog
 
-All notable changes to `richan-fongdasen/turso-laravel` will be documented in this file.
+All notable changes to `mis3085/turso-laravel` will be documented in this file.
+
+## 2.0.0 - 2026-08-24
+
+### What's Changed
+
+* Forked from richan-fongdasen/turso-laravel (last upstream release 1.0.0, 2024-11) and republished as mis3085/turso-laravel
+* Renamed the PHP namespace from `RichanFongdasen\Turso` to `Mis3085\Turso`
+* Added Laravel 12 & 13 support, based on @4lun's compatibility work in [upstream PR #25](https://github.com/richan-fongdasen/turso-laravel/pull/25)
+* Widened `illuminate/*` constraints to `^11.0|^12.0|^13.0` (fixes the "Installation on Laravel 12 failed" issue reported upstream)
+* Extended the CI test matrix: PHP 8.2–8.4 × Laravel 11/12/13, with dependency-floor canaries
+* Added a docker compose `tests` service for running the suite on PHP versions not installed locally
+
+**Full Changelog**: https://github.com/mis3085/turso-laravel/compare/1.0.0...v2.0.0
 
 ## 1.0.0 - 2024-11-13
 
