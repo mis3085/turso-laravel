@@ -9,3 +9,28 @@ parameters:
     tmpDir: build/phpstan
     checkOctaneCompatibility: true
     checkModelProperties: true
+    # The grammar version-compat shim is correct regardless of the installed
+    # framework version; which branch static analysis flags simply depends on
+    # which stub set it sees. Silence the union of both and don't complain
+    # when a pattern does not apply to the installed version.
+    reportUnmatchedIgnoredErrors: false
+    ignoreErrors:
+        # This package ships config/turso-laravel.php to be published into
+        # consuming applications, so its env() calls are legitimate.
+        - identifier: larastan.noEnvCallsOutsideOfConfig
+        # Grammar version-compat shim (see TursoConnection / TursoSchemaBuilder)
+        - message: '#Call to function method_exists\(\) with .*setConnection.* always evaluate to true#'
+          paths:
+              - src/Database/TursoConnection.php
+              - src/Database/TursoSchemaBuilder.php
+        - message: '#(Class Mis3085\\Turso\\Database\\Turso(Query|Schema)Grammar does not have a constructor|constructor invoked with 0 parameters, 1 required)#'
+          paths:
+              - src/Database/TursoConnection.php
+              - src/Database/TursoSchemaBuilder.php
+        - message: '#Call to an undefined method (Mis3085\\Turso\\Database\\Turso(Query|Schema)Grammar|.*::setConnection)\(\)#'
+          paths:
+              - src/Database/TursoConnection.php
+              - src/Database/TursoSchemaBuilder.php
+        - message: '#Call to deprecated method setTablePrefix\(\)#'
+          paths:
+              - src/Database/TursoConnection.php

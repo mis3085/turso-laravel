@@ -1,5 +1,277 @@
 parameters:
-    treatPhpDocTypesAsCertain: false
-    ignoreErrors:
-        - identifier: missingType.iterableValue
-        - identifier: missingType.generics
+	ignoreErrors:
+		-
+			message: '#^Casting to string something that''s already string\.$#'
+			identifier: cast.useless
+			count: 1
+			path: src/Commands/TursoSyncCommand.php
+
+		-
+			message: '#^Interface Mis3085\\Turso\\Contracts\\TursoQuery extends generic interface Illuminate\\Contracts\\Support\\Arrayable but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Contracts/TursoQuery.php
+
+		-
+			message: '#^Call to function is_null\(\) with Illuminate\\Database\\Schema\\Grammars\\Grammar will always evaluate to false\.$#'
+			identifier: function.impossibleType
+			count: 1
+			path: src/Database/TursoConnection.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoConnection\:\:__construct\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoConnection.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoConnection\:\:createReadPdo\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoConnection.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoConnection\:\:getQueryLog\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoConnection.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoConnector\:\:connect\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoConnector.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoPDO\:\:__construct\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoPDO.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoPDO\:\:__construct\(\) has parameter \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoPDO.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoPDO\:\:prepare\(\) has parameter \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoPDO.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\Database\\TursoPDO\:\:\$config type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoPDO.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\Database\\TursoPDO\:\:\$lastInsertIds type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoPDO.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoPDOStatement\:\:__construct\(\) has parameter \$options with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoPDOStatement.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoPDOStatement\:\:execute\(\) has parameter \$params with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoPDOStatement.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoPDOStatement\:\:fetchAll\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoPDOStatement.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\Database\\TursoPDOStatement\:\:\$bindings type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Database/TursoPDOStatement.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Database\\TursoSchemaGrammar\:\:wrap\(\) has parameter \$value with generic class Illuminate\\Support\\Fluent but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Database/TursoSchemaGrammar.php
+
+		-
+			message: '#^Match arm comparison between ''array''\|''object''\|''resource''\|''resource \(closed\)''\|''string''\|''unknown type'' and ''float'' is always false\.$#'
+			identifier: match.alwaysFalse
+			count: 1
+			path: src/Enums/TursoType.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Enums\\TursoType\:\:bind\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Enums/TursoType.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\QueryResponse\:\:__construct\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\QueryResponse\:\:extractColumns\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\QueryResponse\:\:extractColumns\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\QueryResponse\:\:extractRows\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\QueryResponse\:\:extractRows\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\QueryResponse\:\:getColumns\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\QueryResponse\:\:getRawResponse\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\QueryResponse\:\:getRows\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\Http\\QueryResponse\:\:\$columns with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\Http\\QueryResponse\:\:\$rawResponse type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\Http\\QueryResponse\:\:\$rows with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/QueryResponse.php
+
+		-
+			message: '#^Class Mis3085\\Turso\\Http\\RequestBody implements generic interface Illuminate\\Contracts\\Support\\Arrayable but does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/RequestBody.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\Http\\RequestBody\:\:\$queries with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/RequestBody.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\ResponseBody\:\:__construct\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Http/ResponseBody.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\ResponseBody\:\:extractQueryResponses\(\) has parameter \$response with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Http/ResponseBody.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\ResponseBody\:\:extractQueryResponses\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/ResponseBody.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\ResponseBody\:\:getQueryResponses\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/ResponseBody.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Http\\ResponseBody\:\:getRawResponse\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Http/ResponseBody.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\Http\\ResponseBody\:\:\$queryResponses with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/Http/ResponseBody.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\Http\\ResponseBody\:\:\$rawResponse type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Http/ResponseBody.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Queries\\ExecuteQuery\:\:__construct\(\) has parameter \$bindings with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Queries/ExecuteQuery.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\Queries\\ExecuteQuery\:\:getBindings\(\) return type has no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/Queries/ExecuteQuery.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\TursoClient\:\:__construct\(\) has parameter \$config with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/TursoClient.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\TursoClient\:\:getQueryLog\(\) return type with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/TursoClient.php
+
+		-
+			message: '#^Method Mis3085\\Turso\\TursoClient\:\:query\(\) has parameter \$bindingValues with no value type specified in iterable type array\.$#'
+			identifier: missingType.iterableValue
+			count: 1
+			path: src/TursoClient.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\TursoClient\:\:\$config with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/TursoClient.php
+
+		-
+			message: '#^Property Mis3085\\Turso\\TursoClient\:\:\$queryLog with generic class Illuminate\\Support\\Collection does not specify its types\: TKey, TValue$#'
+			identifier: missingType.generics
+			count: 1
+			path: src/TursoClient.php

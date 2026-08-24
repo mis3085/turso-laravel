@@ -9,3 +9,19 @@ services:
       - TURSO_DB_FILE=/var/lib/turso/turso.sqlite
     ports:
       - "8080:8080"
+
+  tests:
+    image: "composer:2"
+    profiles: ["tests"]
+    entrypoint: []
+    working_dir: /app
+    volumes:
+      - .:/app
+      - tests-vendor:/app/vendor
+    environment:
+      # Avoid the conventional DB_URL name: Laravel's ConfigurationUrlParser
+      # would treat it as a connection URL and derive a bogus driver from it.
+      - TURSO_DB_URL=http://turso:8080
+
+volumes:
+  tests-vendor:
